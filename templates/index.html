@@ -2,15 +2,69 @@
 <html>
 <head>
 	<title></title>
+	<style type="text/css">
+	*{margin: 0;
+		padding: 0;}
+		textarea{
+			width: 400px;
+		}
+		.posts{
+			width: 50%;
+			height: 200px;
+			background-color: grey;
+			color: white;
+			margin: 5px;
+			position: relative;
+			box-shadow: 0 0 1px black;
+		}
+		.thread{
+			position: relative;
+			left: 280px
+
+		}
+		#frame{
+			width: 250px;
+			height: 190px;
+			border: 1px solid red;
+			position: absolute;
+			top: 2px
+		}
+		ul{
+			float: right;
+			position: absolute;
+			bottom: 8px;
+			right: 30px;
+			width: auto;
+			height: auto;
+
+		}
+		ul li{
+			float: left;
+			list-style: none;
+			margin: 5px
+		}
+	</style>
 </head>
 <body>
-	<form>
-		<input type="text" name="pass">
+	<form method="POST" action="/">
+		<textarea name="body" rows="10"></textarea><br>
+		<input type="file" name="">
 		<input type="submit" name="">
-
 	</form>
-	<p>
-	 {{ error }}	
-	</p>
+	<div id="container">
+	{% for post in posts %}
+		<div class="posts">
+			<p >{{ post[0] }}</p>
+		<p class="thread">{{ post[1] }}</p>
+			<div id="frame"><p>images</p></div>
+			<ul>
+				<li><a href="#">Discuss</a></li>
+				<li><a href="#">Report</a></li>
+				<li><a href="#">Hide</a></li>
+			</ul>
+		</div>
+	{% endfor %}
+
+	</div>
 </body>
 </html>
