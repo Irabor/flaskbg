@@ -16,7 +16,11 @@ def home():
         my_db.execute('INSERT INTO anons(posts) VALUES( ?)', (post,))
         my_db.commit()
         entry = cursor.execute('SELECT ID, posts FROM anons')
-        return render_template('index.html', posts = entry)
-    return render_template('index.html')
+        return render_template('home.html', posts = entry)
+        if post == '':
+            pass
+    entry = cursor.execute('SELECT ID, posts FROM anons')
+    return render_template('home.html', posts = entry)
+
 if __name__ == '__main__':
     app.run(debug=True)
